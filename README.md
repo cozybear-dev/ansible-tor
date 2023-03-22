@@ -32,6 +32,13 @@ My personal priority was to have a fleet that is well positioned geopolitically,
     -   Actively supports privacy and anonymity
     -   Payment via cryptocurrency
 
+Using these two hosters, my relays are distributed across the following locations;
+
+-   Netherlands
+-   Germany
+-   Various states in the USA
+-   Russia
+
 ## Some useful commands
 ```
 ansible -i ./tor-hosts -u manjaro all -m ping
