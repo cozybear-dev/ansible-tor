@@ -1,0 +1,62 @@
+Log notice file /var/log/tor/notices.log
+
+RunAsDaemon 1
+
+DataDirectory /var/lib/tor
+
+ORPort 443
+{% if ipv6_address is defined %}
+ORPort [{{ ipv6_address }}]:443
+{% endif %}
+
+
+Address {{ ipv4_address }}
+
+OutboundBindAddress {{ ipv4_address }}
+
+Nickname cozybeardev
+
+{% if kilobytes_rate is defined %}
+RelayBandwidthRate {{ kilobytes_rate }} KB
+{% endif %}
+{% if kilobytes_burst is defined %}
+RelayBandwidthBurst {{ kilobytes_burst }} KB
+{% endif %}
+
+ContactInfo {{ contact_info }}
+
+{% if 'exit' == relay_type %}
+DirPort 80
+DirPortFrontPage /etc/tor/tor-exit-notice.html
+{% endif %}
+
+MyFamily nothing
+
+{% if ipv4_address is defined and 'exit' == relay_type %}
+ExitPolicy reject 0.0.0.0/8:* # Block private IPv4
+ExitPolicy reject 169.254.0.0/16:* # Block private IPv4
+ExitPolicy reject 127.0.0.0/8:* # Block private IPv4
+ExitPolicy reject 192.168.0.0/16:* # Block private IPv4
+ExitPolicy reject 10.0.0.0/8:* # Block private IPv4
+ExitPolicy reject 172.16.0.0/12:* # Block private IPv4
+ExitPolicy reject {{ ipv4_address }}:* # Block myself
+ExitPolicy reject *:25     # email spam
+ExitPolicy reject *:22     # ssh scanning
+ExitPolicy accept *:*      # accept all else
+
+ExitRelay 1
+{% endif %}
+
+{% if ipv6_address is defined and 'exit' == relay_type %}
+ExitPolicy reject6 [FC00::]/7:* # Block private IPv6
+ExitPolicy reject6 [FE80::]/10:* # Block link-local IPv6
+ExitPolicy reject6 [2002::]/16:* # Block 6to4 addresses
+ExitPolicy reject6 [{{ ipv6_address }}]:* # Block myself IPv6
+ExitPolicy reject6 *:25     # email spam
+ExitPolicy reject6 *:22     # ssh scanning
+ExitPolicy accept6 *:*      # accept all else
+
+IPv6Exit 1
+{% endif %}
+
+Sandbox 1

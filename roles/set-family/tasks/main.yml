@@ -1,0 +1,10 @@
+---
+- name: Set family to correct value
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/tor/torrc
+    regexp: '^MyFamily'
+    line: MyFamily {{ tor_family }}
+- name: Reload Tor service
+  ansible.builtin.include_role:
+    name: reload-tor

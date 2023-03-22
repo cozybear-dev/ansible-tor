@@ -1,0 +1,23 @@
+---
+
+tor_contact_email -> general email address
+hostname          -> host
+
+---
+
+ipv4_address  -> ansible_eth0.ipv4.address, required
+ipv6_address  -> ansible_eth0.ipv6.address, default None
+
+contact_info  -> general contact info
+
+kilobytes_burst -> var in inventory per host, default None
+kilobytes_rate  -> var in inventory per host, default None
+relay_type      -> var in inventory per host, default None
+
+user_password -> at runtime
+
+See FIXME
+
+---
+
+

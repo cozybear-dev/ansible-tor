@@ -1,0 +1,65 @@
+---
+- name: Add Tor repositories
+  become: yes
+  ansible.builtin.apt_repository:
+    repo: {{ item.repo }}
+    state: present
+    filename: tor
+  loop:
+    - repo: deb [signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] https://deb.torproject.org/torproject.org bullseye main
+    - repo: deb-src [signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] https://deb.torproject.org/torproject.org bullseye main
+- name: Ensure torproject gpg key is installed (A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89) #credits; https://github.dev/nusenu/ansible-relayor
+  become: yes
+  apt_key:
+    url: https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc
+    id: A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89
+    state: present
+- name: Install Tor packages
+  ansible.builtin.apt:
+    name: {{ item.package }}
+    state: present
+    update_cache: yes
+  loop:
+    - package: tor
+    - package: deb.torproject.org-keyring
+    - package: nyx
+- name: Ensure tor-exit-notice.html is present (if we are an exit)
+  become: yes
+  template:
+    src: ../files/tor-exit-notice.j2
+    dest: "/etc/tor/tor-exit-notice.html"
+    mode: 0444
+  when: FIXME torexitrelay
+- name: Place torrc configuration file
+  become: yes
+  ansible.builtin.template:
+    src: ../files/torrc.j2
+    dest: /etc/tor/torrc
+    owner: root
+    group: root
+    mode: '0644'
+- name: Restart Tor service
+  become: yes
+  ansible.builtin.include_role:
+    name: restart-tor
+- name: Install automatic upgrade packages
+  become: yes
+  ansible.builtin.apt:
+    name: {{ item.package }}
+    state: present
+    update_cache: yes
+  loop:
+    - package: unattended-upgrades
+    - package: apt-listchanges
+- name: Copy 50unattended-upgrades policy
+  become: yes
+  ansible.builtin.copy:
+    src: ../files/{{ item.file }}
+    dest: /etc/apt/apt.conf.d/{{ item.file }}
+    owner: root
+    group: root
+    mode: '0644'
+  loop:
+    - file: 50unattended-upgrades
+    - file: 20auto-upgrades
+

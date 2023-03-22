@@ -1,0 +1,4 @@
+---
+- name: Netdata agent installation
+  shell: wget -O /tmp/netdata-kickstart.sh https://my-netdata.io/kickstart.sh && sh /tmp/netdata-kickstart.sh --non-interactive --stable-channel --claim-token FIXME --claim-url https://app.netdata.cloud
+  

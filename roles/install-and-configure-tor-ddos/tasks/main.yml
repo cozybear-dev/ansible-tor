@@ -1,0 +1,12 @@
+apt install git ipset curl
+git clone https://github.com/Enkidu-6/tor-ddos
+chmod u+x ./*.sh
+(crontab -l ; echo "0 0 * * * /$PWD/refresh-authorities.sh") | crontab -
+(crontab -l ; echo "*/15 * * * * /$PWD/remove-dual-or.sh") | crontab -
+
+cd /etc
+mv sysctl.conf sysctl.conf.dist
+wget https://raw.githubusercontent.com/torservers/server-config-templates/master/sysctl.conf
+sysctl -p
+
+ulimit -SHn 65000

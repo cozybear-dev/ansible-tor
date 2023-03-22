@@ -1,0 +1,21 @@
+---
+- name: Harden SSH configuration
+  become: true
+  lineinfile:
+    line: "{{ item.line }}"
+    regexp: "{{ item.regexp }}"
+    path: /etc/ssh/sshd_config
+  loop:
+    - line: UsePAM no
+      regexp: ^PermitRootLogin
+    - line: PubkeyAuthentication yes
+      regexp: ^PubkeyAuthentication
+    - line: PasswordAuthentication no
+      regexp: ^PasswordAuthentication
+    - line: UsePAM no
+      regexp: ^UsePAM
+- name: Reload SSH service
+  become: true
+  ansible.builtin.service:
+    name: ssh
+    state: restarted

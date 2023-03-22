@@ -1,0 +1,6 @@
+---
+- hosts: tor-relays
+# - hosts: testing
+  become: yes
+  roles:
+    - update-upgrade-all

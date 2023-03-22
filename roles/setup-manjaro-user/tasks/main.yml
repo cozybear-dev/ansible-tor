@@ -1,0 +1,25 @@
+---
+- name: Create manjaro user
+  become: true
+  ansible.builtin.user:
+    name: manjaro
+    state: present
+    # password: "{{ default_user_password | password_hash('sha512','A512') }}"
+    shell: /bin/bash
+    group: sudo
+    FIXME!
+- name: Set authorized key for manjaro user
+  become: true
+  ansible.posix.authorized_key:
+    user: manjaro
+    state: present
+    key: FIXME
+- name: Install useful packages
+  become: true
+  ansible.builtin.apt:
+    name: {{ item.package }}
+    state: present
+    update_cache: yes
+  loop:
+    - package: sudo
+    - package: htop
