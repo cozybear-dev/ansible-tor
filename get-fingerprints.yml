@@ -1,0 +1,4 @@
+---
+- hosts: tor-fleet
+  roles:
+    - get-node-hash

@@ -41,7 +41,10 @@ Using these two hosters, my relays are distributed across the following location
 
 ## Some useful commands
 ```
+npm install -g @bitwarden/cli
+
 ansible-galaxy collection install ansible.posix
+
 ansible-galaxy collection install community.general
 
 ansible -i ./tor-hosts -u manjaro all -m ping
@@ -55,4 +58,6 @@ ansible-playbook -i ./tor-hosts --ask-become-pass -u root ./setup-tor-node.yml
 ansible-playbook -i ./tor-hosts --ask-become-pass -u manjaro ./set-family.yml
 
 ansible-playbook -i ./tor-hosts --ask-become-pass -u manjaro ./update-upgrade-all.yml
+
+ansible-playbook -i ./tor-hosts --ask-become-pass -u manjaro ./get-fingerprints.yml
 ```
