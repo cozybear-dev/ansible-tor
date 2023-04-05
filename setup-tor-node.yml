@@ -15,5 +15,5 @@
     - setup-dns
     - install-and-configure-tor
     - install-netdata-agent
-    - set-ssh-config #any reboots after this role, will fail during setup with root user
+    - set-ssh-config #any reboots after this role, will fail during very first setup with root user
     - get-node-hash
