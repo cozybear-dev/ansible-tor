@@ -1,0 +1,8 @@
+---
+- name: Get relay fingerprint
+  become: yes
+  shell: cat /var/lib/tor/fingerprint
+  register: relay_fingerprint
+- name: Show relay fingerprint
+  debug:
+    msg: "{{relay_fingerprint.stdout}}"

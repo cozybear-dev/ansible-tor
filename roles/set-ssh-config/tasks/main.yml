@@ -6,7 +6,7 @@
     regexp: "{{ item.regexp }}"
     path: /etc/ssh/sshd_config
   loop:
-    - line: UsePAM no
+    - line: PermitRootLogin no
       regexp: ^PermitRootLogin
     - line: PubkeyAuthentication yes
       regexp: ^PubkeyAuthentication
@@ -14,8 +14,28 @@
       regexp: ^PasswordAuthentication
     - line: UsePAM no
       regexp: ^UsePAM
-- name: Reload SSH service
+    - line: LogLevel VERBOSE
+      regexp: ^#LogLevel
+    - line: GSSAPIAuthentication no
+      regexp: ^#GSSAPIAuthentication
+    - line: AllowAgentForwarding no
+      regexp: ^#AllowAgentForwarding
+    - line: AllowTcpForwarding no
+      regexp: ^#AllowTcpForwarding
+    - line: ClientAliveCountMax 2
+      regexp: ^#ClientAliveCountMax
+    - line: MaxAuthTries 3
+      regexp: ^#MaxAuthTries
+    - line: MaxSessions 2
+      regexp: ^#MaxSessions
+    - line: GatewayPorts no
+      regexp: ^#GatewayPorts
+    - line: TCPKeepAlive yes
+      regexp: ^#TCPKeepAlive
+  register: ssh_config
+- name: Restart SSH service
   become: true
   ansible.builtin.service:
     name: ssh
     state: restarted
+  when: ssh_config.changed

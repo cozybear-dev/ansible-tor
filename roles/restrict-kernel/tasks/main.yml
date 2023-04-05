@@ -1,0 +1,39 @@
+---
+# full credits; https://github.com/dan-kir/ansible-debian-11-hardening
+# Kernel security hardening from
+# https://madaidans-insecurities.github.io/guides/linux-hardening.html
+
+- name: Kernel - Disable unused kernel modules
+  become: yes
+  ansible.builtin.copy:
+    src: ../files/kernel_module_hardening.conf
+    dest: /etc/modprobe.d/kernel_module_hardening.conf
+    owner: root
+    group: root
+    mode: '644'
+  register: changed_kernel_modules
+
+- name: Kernel - Import sysctl_hardening
+  ansible.builtin.include_vars: sysctl_hardening.yml
+
+- name: Kernel - Apply sysctl kernel hardening
+  become: yes
+  ansible.posix.sysctl:
+    name: '{{ item.key }}'
+    value: '{{ item.value }}'
+    sysctl_set: yes
+    state: present
+    reload: yes
+    ignoreerrors: yes
+  with_dict: '{{ sysctl_hardening }}'
+
+- name: Reboot
+  become: yes
+  reboot:
+    msg: "Reboot initiated by Ansible as required"
+    connect_timeout: 5
+    reboot_timeout: 300
+    pre_reboot_delay: 0
+    post_reboot_delay: 30
+    test_command: uptime
+  when: changed_kernel_modules.changed

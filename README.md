@@ -41,13 +41,16 @@ Using these two hosters, my relays are distributed across the following location
 
 ## Some useful commands
 ```
+ansible-galaxy collection install ansible.posix
+ansible-galaxy collection install community.general
+
 ansible -i ./tor-hosts -u manjaro all -m ping
 
 ansible -i ./tor-hosts -u manjaro testing -m ping
 
-ansible -i ./tor-hosts -u manjaro tor-relays -m ping
+ansible -i ./tor-hosts -u manjaro tor-fleet -m ping
 
-ansible-playbook -i ./tor-hosts -u root --ask-become-pass ./set-family.yml
+ansible-playbook -i ./tor-hosts --ask-become-pass -u root ./setup-tor-node.yml
 
 ansible-playbook -i ./tor-hosts --ask-become-pass -u manjaro ./set-family.yml
 

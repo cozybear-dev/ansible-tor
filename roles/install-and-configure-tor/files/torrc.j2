@@ -5,7 +5,7 @@ RunAsDaemon 1
 DataDirectory /var/lib/tor
 
 ORPort 443
-{% if ipv6_address is defined %}
+{% if ipv6_address != "" %}
 ORPort [{{ ipv6_address }}]:443
 {% endif %}
 
@@ -16,23 +16,23 @@ OutboundBindAddress {{ ipv4_address }}
 
 Nickname cozybeardev
 
-{% if kilobytes_rate is defined %}
+{% if kilobytes_rate != "" %}
 RelayBandwidthRate {{ kilobytes_rate }} KB
 {% endif %}
-{% if kilobytes_burst is defined %}
+{% if kilobytes_burst != "" %}
 RelayBandwidthBurst {{ kilobytes_burst }} KB
 {% endif %}
 
 ContactInfo {{ contact_info }}
 
-{% if 'exit' == relay_type %}
+{% if tor_exit_enabled | bool %}
 DirPort 80
 DirPortFrontPage /etc/tor/tor-exit-notice.html
 {% endif %}
 
 MyFamily nothing
 
-{% if ipv4_address is defined and 'exit' == relay_type %}
+{% if ipv4_address is defined and tor_exit_enabled | bool %}
 ExitPolicy reject 0.0.0.0/8:* # Block private IPv4
 ExitPolicy reject 169.254.0.0/16:* # Block private IPv4
 ExitPolicy reject 127.0.0.0/8:* # Block private IPv4
@@ -47,7 +47,7 @@ ExitPolicy accept *:*      # accept all else
 ExitRelay 1
 {% endif %}
 
-{% if ipv6_address is defined and 'exit' == relay_type %}
+{% if ipv6_address != "" and tor_exit_enabled | bool %}
 ExitPolicy reject6 [FC00::]/7:* # Block private IPv6
 ExitPolicy reject6 [FE80::]/10:* # Block link-local IPv6
 ExitPolicy reject6 [2002::]/16:* # Block 6to4 addresses

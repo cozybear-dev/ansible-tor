@@ -1,5 +1,5 @@
 ---
-- hosts: tor-relays
+- hosts: tor-fleet
 # - hosts: testing
   become: yes
   roles:

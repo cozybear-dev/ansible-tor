@@ -1,4 +1,7 @@
 ---
+- name: Get running services
+  ansible.builtin.service_facts:
 - name: Netdata agent installation
-  shell: wget -O /tmp/netdata-kickstart.sh https://my-netdata.io/kickstart.sh && sh /tmp/netdata-kickstart.sh --non-interactive --stable-channel --claim-token FIXME --claim-url https://app.netdata.cloud
-  
+  become: yes
+  shell: wget -O /tmp/netdata-kickstart.sh https://my-netdata.io/kickstart.sh && sh /tmp/netdata-kickstart.sh --non-interactive --stable-channel --claim-token {{ lookup('community.general.bitwarden', 'netdata-claim-token', field='password')[0] }} --claim-url https://app.netdata.cloud
+  when: ansible_facts.services["netdata.service"] is not defined

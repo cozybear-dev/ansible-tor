@@ -1,8 +1,21 @@
 ---
-- name: Install DNS packages
+- name: Disable IPv6 in kernel
+  become: yes
+  ansible.posix.sysctl:
+    name: "{{ item.config }}"
+    value: '1'
+    sysctl_set: true
+    state: present
+    reload: true
+  loop:
+    - config: net.ipv6.conf.all.disable_ipv6
+    - config: net.ipv6.conf.default.disable_ipv6
+  when:
+    - not ipv6_enabled | bool
+- name: Install packages
   become: yes
   ansible.builtin.apt:
-    name: {{ item.package }}
+    name: "{{ item.package }}"
     state: present
     update_cache: yes
   loop:
@@ -11,38 +24,14 @@
     - package: apt-transport-https
     - package: gpg
 
-- name: Set resolv.conf configuration (ipv4)
-  become: yes
-  ansible.builtin.copy:
-    content: 'nameserver 127.0.0.53'
-    dest: /etc/resolv.conf
-    owner: root
-    group: root
-    mode: '0644'
-  when: FIXME ipv4
-- name: Set resolv.conf configuration (ipv6)
-  become: yes
-  ansible.builtin.copy:
-    content: 'nameserver 127.0.0.1'
-    dest: /etc/resolv.conf
-    owner: root
-    group: root
-    mode: '0644'
-  when: FIXME ipv6
-  
-- name: Ensure resolv.conf is immutable
-  become: yes
-  file:
-    path: /etc/resolv.conf
-    attr: +i
-
 - name: Install unbound package
   become: yes
   ansible.builtin.apt:
     name: unbound
     state: present
     update_cache: yes
-  when: FIXME ipv6
+  when:
+    - ipv6_enabled | bool
 
 - name: Configure systemd-resolved
   become: yes
@@ -52,23 +41,42 @@
     owner: root
     group: root
     mode: '0644'
-  when: FIXME ipv4
+  when:
+    - not ipv6_enabled | bool
 - name: Start and enable systemd-resolved
   become: yes
   ansible.builtin.service:
     name: systemd-resolved
     state: started
     enabled: yes
-  when: FIXME ipv4
-- name: Apply no-ipv6 sysctl config
+  when:
+    - not ipv6_enabled | bool
+
+- name: Set resolv.conf configuration (ipv4)
   become: yes
-  ansible.posix.sysctl:
-    name: {{ item.config }}
-    value: '1'
-    sysctl_set: true
-    state: present
-    reload: true
-  loop:
-    - config: net.ipv6.conf.all.disable_ipv6
-    - config: net.ipv6.conf.default.disable_ipv6
-  when: FIXME ipv4
+  ansible.builtin.copy:
+    content: 'nameserver 127.0.0.53'
+    dest: /etc/resolv.conf
+    owner: root
+    group: root
+    mode: '0644'
+  when:
+    - not ipv6_enabled | bool
+- name: Set resolv.conf configuration (ipv6)
+  become: yes
+  ansible.builtin.copy:
+    content: 'nameserver 127.0.0.1'
+    dest: /etc/resolv.conf
+    owner: root
+    group: root
+    mode: '0644'
+  when:
+    - ipv6_enabled | bool
+  
+- name: Ensure resolv.conf is immutable
+  become: yes
+  file:
+    path: /etc/resolv.conf
+    attr: +i
+
+
