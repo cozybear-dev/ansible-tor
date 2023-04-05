@@ -20,7 +20,7 @@ Only Debian 11 is supported.
 Features:
 - Basic hardening (ssh, kernel, additional user with password, apparmor)
 - Automatic updating/upgrading
-- Uses BitWarden for secrets
+- Uses Bitwarden for secrets
 - Stateless
 
 ## Personal recommendations for hosters
