@@ -8,6 +8,9 @@
   loop:
     - package: apparmor
     - package: apparmor-utils
+    - package: apparmor-profiles
+    - package: apparmor-profiles-extra
+    - package: apparmor-notify
 - name: Enable apparmor in grub
   become: yes
   lineinfile:
