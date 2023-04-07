@@ -16,9 +16,9 @@
     password: "{{ lookup('community.general.bitwarden', 'manjaro-user-passwd-tor-fleet', field='password')[0] | password_hash }}"
     shell: /bin/bash
     group: sudo
-- name: Set authorized key for manjaro user
+- name: Set authorized key (yubikey 2fa) for manjaro user
   become: true
   ansible.posix.authorized_key:
     user: manjaro
     state: present
-    key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCzCx4ZzUwogMrjiHtsQ8w3n8YhSjOaxr4LqnKD6dwdCAB+5EseG7L5l/dZTG3CfbSYgYCyyb+kZfexBuEiy4b+FsVK3AdQuiu2smn4of9B6N6WzgBgznYML8ATPG1YoyXvTDoI6vgCU+Mh5kgv+M95wV24AxJhkYd/F6+tdoz3X9MqWWrAnskdPTnV5PGFkMnQOSqE+h3U4iYnhDOSEZNXxwP1E/5jImmv6TZvl/6BYkpMdPjlrQPEM/0qFTM1ricwViWghbgU2monOvD4hlHHXN5gzmP1pR4UgTh0fSydhUo/4IpP2tW9JGdOT5BwThBsGD2JQyp28Rsroy5DaBXoPAubf5U4E0TwD4qxlWvqCW15mxCQEMbHyPSSQMbpOCXbxX9i5jIaoCsdYBnGVCER5k03g1KKjWezVc9p+/11VJZwtevO1R374Dml5eX1y6xAvn4G9rZXi1AY6K47E8ZxdCGXgGY+w5Lz4ngXeFKBLao3snwNrTnhMUE5HzbaDic=
+    key: sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIDbXa6BWHM2avjHZlCzPfnYt/5we+WsdgN9asF9FS9DRAAAABHNzaDo=

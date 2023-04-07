@@ -1,5 +1,5 @@
 ---
-- hosts: tor-fleet-managed
+- hosts: testnode
   vars:
     contact_info: cozybear-dev <tor(@)shadowbrokers(.)eu>
     tor_contact_email: tor@shadowbrokers.eu
@@ -10,10 +10,4 @@
     kilobytes_rate: "{{ kilobytes_rate_conf | default('') }}"
   roles:
     - setup-manjaro-user
-    - setup-apparmor
-    - restrict-kernel
-    - setup-dns
-    - install-and-configure-tor
-    - install-netdata-agent
-    - set-ssh-config #any reboots after this role, will fail during setup with root user
-    - get-node-hash
+    - set-ssh-config 

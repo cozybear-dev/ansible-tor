@@ -1,4 +1,7 @@
-[testing]
+[testnode]
+tor.testnode.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no
+
+[tor-fleet-managed]
 tor.node2.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no
 tor.node8.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no
 
