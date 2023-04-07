@@ -13,7 +13,7 @@ If you want something more simple and straightforward, also look at these projec
 - https://github.com/dan-kir/ansible-debian-11-tor-relay
 - https://github.com/dan-kir/ansible-debian-11-hardening
 
-I wanted to keep it simple, and understandable - hence creating this small project. 
+I wanted to keep it simple, and understandable - hence creating this small project. I'm well aware this repo does not adhere to the documented structure of ansible role development.
 
 Only Debian 11 is supported.
 
