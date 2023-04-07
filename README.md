@@ -43,7 +43,7 @@ My personal priority was to have a fleet that is well positioned geopolitically,
     -   Actively supports privacy and anonymity
     -   Payment via cryptocurrency
 
-Using these two hosters, my relays are distributed across the following locations;
+Using these two hosters, my relays are distributed across the following locations; 
 
 -   Netherlands
 -   Germany
