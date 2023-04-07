@@ -4,13 +4,24 @@ This GitHub repository is my personal development environment for automated stat
 
 My fleet can be found here; https://metrics.torproject.org/rs.html#search/cozybear
 
-There is already a great repository here with way better support and e.g. key management; https://github.com/nusenu/ansible-relayor
+There is already a great repository here with way better support and e.g. key management; 
 
-I wanted to keep it simple, and understandable - hence creating this small project. 
+- https://github.com/nusenu/ansible-relayor
 
-**The ansible playbooks do not work yet and are in development.**
+If you want something more simple and straightforward, also look at these projects (used some tasks myself from here in this repo as well);
+
+- https://github.com/dan-kir/ansible-debian-11-tor-relay
+- https://github.com/dan-kir/ansible-debian-11-hardening
+
+I wanted to keep it simple, and understandable - hence creating this small project. I'm well aware this repo does not adhere to the documented structure of ansible role development.
 
 Only Debian 11 is supported.
+
+Features:
+- Basic hardening (ssh, kernel, additional user with password, apparmor)
+- Automatic updating/upgrading
+- Uses Bitwarden for secrets
+- Stateless
 
 ## Personal recommendations for hosters
 
