@@ -1,4 +1,5 @@
 ---
-- hosts: tor-fleet 
+- hosts: tor-fleet
+# - hosts: tor-fleet-managed
   roles:
     - get-node-hash

@@ -15,7 +15,7 @@ If you want something more simple and straightforward, also look at these projec
 
 I wanted to keep it simple, and understandable - hence creating this small project. I'm well aware this repo does not adhere to the documented structure of ansible role development.
 
-Only Debian 11 is supported.
+Only Debian 11 is supported. Debian 10 partially works, but kernel hardening fails partially, sk-ssh-ed25519 is unsupported and DNS over TLS (if no IPv6) will fail - it is NOT supported nor will it ever be! 
 
 Features:
 - Basic hardening (ssh, kernel, additional user with password, apparmor)
@@ -47,6 +47,8 @@ Using these two hosters, my relays are distributed across the following location
 
 -   Netherlands
 -   Germany
+-   Sweden
+-   Finland
 -   Various states in the USA
 -   Russia
 
@@ -71,4 +73,6 @@ ansible-playbook -i ./tor-hosts --ask-become-pass -u manjaro ./set-family.yml
 ansible-playbook -i ./tor-hosts --ask-become-pass -u manjaro ./update-upgrade-all.yml
 
 ansible-playbook -i ./tor-hosts --ask-become-pass -u manjaro ./get-fingerprints.yml
+
+ansible-playbook -i ./tor-hosts --ask-pass -u vshell ./setup-tor-node.yml
 ```

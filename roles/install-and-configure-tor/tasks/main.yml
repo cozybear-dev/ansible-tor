@@ -13,8 +13,8 @@
     state: present
     filename: tor
   loop:
-    - repo: deb [signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] https://deb.torproject.org/torproject.org bullseye main
-    - repo: deb-src [signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] https://deb.torproject.org/torproject.org bullseye main
+    - repo: "deb [signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] https://deb.torproject.org/torproject.org {{ ansible_distribution_release }} main"
+    - repo: "deb-src [signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] https://deb.torproject.org/torproject.org {{ ansible_distribution_release }} main"
 - name: Install Tor packages
   become: yes
   ansible.builtin.apt:
@@ -58,7 +58,7 @@
   loop:
     - package: unattended-upgrades
     - package: apt-listchanges
-- name: Copy 50unattended-upgrades policy
+- name: Copy upgrade policies
   become: yes
   ansible.builtin.copy:
     src: ../files/{{ item.file }}
