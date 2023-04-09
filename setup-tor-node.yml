@@ -1,7 +1,7 @@
 ---
 - hosts: tor-fleet-managed
   vars:
-    contact_info: cozybear-dev <tor(@)shadowbrokers(.)eu>
+    contact_info: "email:tor[]shadowbrokers.eu url:shadowbrokers.eu proof:dns-rsa btc:bc1qu9m2sy836pmyku0t3vnmpjxfjds8p2x5psyl6y ciissversion:2"
     tor_contact_email: tor@shadowbrokers.eu
     hostname: "{{ inventory_hostname }}"
     ipv6_enabled: "{{ ipv6_enabled_conf | default('yes') }}"
