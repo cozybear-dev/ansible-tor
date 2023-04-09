@@ -23,3 +23,10 @@
     state: present
     exclusive: true
     key: sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIDbXa6BWHM2avjHZlCzPfnYt/5we+WsdgN9asF9FS9DRAAAABHNzaDo=
+- name: Disable root user
+  become: true
+  ansible.builtin.user:
+    name: root
+    state: present
+    password_lock: true
+    shell: "/sbin/nologin"
