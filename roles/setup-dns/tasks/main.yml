@@ -24,6 +24,12 @@
     - package: apt-transport-https
     - package: gpg
 
+- name: Ensure resolv.conf is mutable
+  become: yes
+  file:
+    path: /etc/resolv.conf
+    attr: -i
+
 - name: Install unbound package
   become: yes
   ansible.builtin.apt:

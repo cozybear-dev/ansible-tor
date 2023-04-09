@@ -1,6 +1,5 @@
 ---
-- hosts: tor-fleet
-# - hosts: tor-fleet-managed
+- hosts: tor-fleet-managed
   vars:
     tor_family: > 
       84FA05E6A80EBE36BD84A51705C467FA98188D4A,
