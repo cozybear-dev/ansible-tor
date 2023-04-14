@@ -14,3 +14,4 @@ tor.node9.shadowbrokers.eu ipv6_enabled_conf=no
 tor.node10.shadowbrokers.eu ipv6_enabled_conf=no
 tor.node11.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no
 tor.node12.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no
+tor.node14.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no

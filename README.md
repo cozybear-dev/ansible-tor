@@ -18,7 +18,7 @@ I wanted to keep it simple, and understandable - hence creating this small proje
 Only Debian 11 is supported. Debian 10 partially works, but kernel hardening fails partially, sk-ssh-ed25519 is unsupported and DNS over TLS (if no IPv6) will fail - it is NOT supported nor will it ever be! 
 
 Features:
-- Basic hardening (ssh, kernel, additional user with password, apparmor)
+- Basic hardening (ssh, kernel, additional user with password, apparmor, prevent core dumping, disable root user)
 - Automatic updating/upgrading
 - Uses Bitwarden for secrets
 - Stateless

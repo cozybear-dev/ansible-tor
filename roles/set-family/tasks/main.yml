@@ -5,6 +5,8 @@
     path: /etc/tor/torrc
     regexp: '^MyFamily'
     line: MyFamily {{ tor_family }}
+  register: family_change
 - name: Reload Tor service
   ansible.builtin.include_role:
     name: reload-tor
+  when: family_change.changed

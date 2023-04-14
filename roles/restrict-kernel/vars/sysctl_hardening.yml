@@ -89,3 +89,8 @@ sysctl_hardening:
       ## improving its effectiveness.
       vm.mmap_rnd_bits: 32
       vm.mmap_rnd_compat_bits: 16
+
+      ## Prevent core dumping
+      ## From: https://www.cyberciti.biz/faq/disable-core-dumps-in-linux-with-systemd-sysctl/
+      # fs.suid_dumpable: 0
+      # kernel.core_pattern: |/bin/false

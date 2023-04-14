@@ -27,6 +27,13 @@
     ignoreerrors: yes
   with_dict: '{{ sysctl_hardening }}'
 
+# - name: Kernel - Disable core dumping in PAM config
+#   community.general.pam_limits:
+#     domain: *
+#     limit_type: hard
+#     limit_item: core
+#     value: 0
+
 - name: Reboot
   become: yes
   reboot:
