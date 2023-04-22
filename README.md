@@ -35,6 +35,7 @@ My personal priority was to have a fleet that is well positioned geopolitically,
     -   Payment via cryptocurrency, and had no issues with privacy/anonymity
     -   Stable enough, but I did have to create a sideproject for unknown stability issues;
         -   https://github.com/cozybear-dev/auto-heal-aeza
+        -   They did have some heavy DDOS issues during my time of use. They resolved it in due time. The stability and bandwidth varies per location. It's nowhere near gigabit sustained (still very fast, especially for the price), more like peak.
     -   Support is really quick, and English is not a problem
 - https://incognet.io/
     -   Great performance, biggest cost is the bandwidth
@@ -49,6 +50,7 @@ Using these two hosters, my relays are distributed across the following location
 -   Germany
 -   Sweden
 -   Finland
+-   Austria
 -   Various states in the USA
 -   Russia
 
