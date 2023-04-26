@@ -43,6 +43,8 @@ My personal priority was to have a fleet that is well positioned geopolitically,
     -   Support can be slow (up to a few days), but the responses are always very extensive and detailed
     -   Actively supports privacy and anonymity
     -   Payment via cryptocurrency
+- https://veesp.com/
+    -   Still experimenting, looks promising.
 
 Using these two hosters, my relays are distributed across the following locations; 
 
