@@ -17,5 +17,6 @@ tor.node12.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no
 tor.node13.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no
 tor.node14.shadowbrokers.eu ipv6_enabled_conf=no
 tor.node15.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no
+tor.node16.shadowbrokers.eu
 
 [setup]
