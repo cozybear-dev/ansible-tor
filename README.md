@@ -78,5 +78,5 @@ ansible-playbook -i ./tor-hosts --ask-become-pass -u manjaro ./update-upgrade-al
 
 ansible-playbook -i ./tor-hosts --ask-become-pass -u manjaro ./get-fingerprints.yml
 
-ansible-playbook -i ./tor-hosts --ask-pass -u vshell ./setup-tor-node.yml
+ansible-playbook -i ./tor-hosts --ask-pass -u root ./setup-tor-node.yml
 ```
