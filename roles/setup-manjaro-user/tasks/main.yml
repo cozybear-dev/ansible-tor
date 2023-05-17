@@ -8,6 +8,7 @@
   loop:
     - package: sudo
     - package: htop
+    - package: curl
 - name: Create manjaro user
   become: true
   ansible.builtin.user:

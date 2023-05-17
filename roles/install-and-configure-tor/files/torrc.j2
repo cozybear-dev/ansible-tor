@@ -30,7 +30,7 @@ DirPort 80
 DirPortFrontPage /etc/tor/tor-exit-notice.html
 {% endif %}
 
-MyFamily nothing
+MyFamily {{ tor_family }}
 
 {% if ipv4_address is defined and tor_exit_enabled | bool %}
 ExitPolicy reject 0.0.0.0/8:* # Block private IPv4

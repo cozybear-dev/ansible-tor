@@ -12,6 +12,21 @@
     - config: net.ipv6.conf.default.disable_ipv6
   when:
     - not ipv6_enabled | bool
+
+- name: Enable IPv6 in kernel
+  become: yes
+  ansible.posix.sysctl:
+    name: "{{ item.config }}"
+    value: '0'
+    sysctl_set: true
+    state: present
+    reload: true
+  loop:
+    - config: net.ipv6.conf.all.disable_ipv6
+    - config: net.ipv6.conf.default.disable_ipv6
+  when:
+    - ipv6_enabled | bool
+
 - name: Install packages
   become: yes
   ansible.builtin.apt:
@@ -49,6 +64,7 @@
     mode: '0644'
   when:
     - not ipv6_enabled | bool
+
 - name: Start and enable systemd-resolved
   become: yes
   ansible.builtin.service:
@@ -68,6 +84,7 @@
     mode: '0644'
   when:
     - not ipv6_enabled | bool
+
 - name: Set resolv.conf configuration (ipv6)
   become: yes
   ansible.builtin.copy:

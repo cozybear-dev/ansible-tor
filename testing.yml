@@ -1,7 +1,7 @@
 ---
 - hosts: testnode
   vars:
-    contact_info: "email:tor[]shadowbrokers.eu - testnode to determine hoster viability"
+    contact_info: "email:tor[]shadowbrokers.eu - testing automation"
     tor_contact_email: tor@shadowbrokers.eu
     hostname: "{{ inventory_hostname }}"
     ipv6_enabled: "{{ ipv6_enabled_conf | default('yes') }}"
@@ -14,6 +14,6 @@
     - restrict-kernel
     - setup-dns
     - install-and-configure-tor
-    - install-netdata-agent
+    # - install-netdata-agent
     - set-ssh-config #any reboots after this role, will fail during very first setup with root user
     - get-node-hash
