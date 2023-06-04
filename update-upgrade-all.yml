@@ -1,5 +1,5 @@
 ---
-- hosts: tor-fleet
+- hosts: tor-fleet-managed
 # - hosts: testing
   become: yes
   roles:

@@ -27,7 +27,7 @@ Features:
 
 Tor needs to be as decentralised as possible, to minimize traffic corrolation attacks and agency interference. This means that the cheapest high performance servers with unlimited bandwidth (like Hetzner), are not the best option for the network. In general it's better to choose a hoster that has relatively low total bandwidth, to better serve the network.
 
-My personal priority was to have a fleet that is well positioned geopolitically, not too expensive, and cares about privacy and anonymity - whilst not be one of the big hosters that has too many relays anyway. Using these principles, I found my way into these two hosters;
+My personal priority was to have a fleet that is well positioned geopolitically, not too expensive, and cares about privacy and anonymity - whilst not be one of the big hosters that has too many relays anyway. Using these principles, I found my way into these hosters;
 
 - https://aeza.net/
     -   Incredible bang for buck
@@ -35,7 +35,7 @@ My personal priority was to have a fleet that is well positioned geopolitically,
     -   Payment via cryptocurrency, and had no issues with privacy/anonymity
     -   Stable enough, but I did have to create a sideproject for unknown stability issues;
         -   https://github.com/cozybear-dev/auto-heal-aeza
-        -   They did have some heavy DDOS issues during my time of use. They resolved it in due time. The stability and bandwidth varies per location. It's nowhere near gigabit sustained (still very fast, especially for the price), more like peak.
+        -   They had some heavy DDOS issues during my time of use. They resolved it in due time. The stability and bandwidth varies per location. It's nowhere near gigabit sustained (still very fast, especially for the price), more like peak.
     -   Support is really quick, and English is not a problem
 - https://incognet.io/
     -   Great performance, biggest cost is the bandwidth
@@ -44,14 +44,16 @@ My personal priority was to have a fleet that is well positioned geopolitically,
     -   Actively supports privacy and anonymity
     -   Payment via cryptocurrency
 - https://veesp.com/
-    -   Still experimenting, looks promising.
+    -   Reliable, fast speed, privacy friendly, accept crypto, bit more expensive
+    -   Primary downside, no exits allowed
 
-Using these two hosters, my relays are distributed across the following locations; 
+Using these hosters, my relays are distributed across the following locations; 
 
 -   Netherlands
 -   Germany
 -   Sweden
 -   Finland
+-   France
 -   Austria
 -   Various states in the USA
 -   Russia
