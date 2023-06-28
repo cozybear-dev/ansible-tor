@@ -1,5 +1,5 @@
 [testnode]
-tor.testnode.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no
+tor.node17.shadowbrokers.eu tor_exit_enabled_conf=yes 
 
 [tor-fleet-managed]
 tor.node1.shadowbrokers.eu tor_exit_enabled_conf=yes kilobytes_rate_conf=3600 kilobytes_burst_conf=15000
@@ -10,7 +10,7 @@ tor.node5.shadowbrokers.eu tor_exit_enabled_conf=yes kilobytes_rate_conf=5500 ki
 tor.node6.shadowbrokers.eu tor_exit_enabled_conf=yes kilobytes_rate_conf=5500 kilobytes_burst_conf=15000
 tor.node7.shadowbrokers.eu tor_exit_enabled_conf=yes
 tor.node8.shadowbrokers.eu tor_exit_enabled_conf=yes 
-tor.node9.shadowbrokers.eu tor_exit_enabled_conf=yes
+tor.node9.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no
 tor.node10.shadowbrokers.eu tor_exit_enabled_conf=yes
 tor.node11.shadowbrokers.eu tor_exit_enabled_conf=yes
 tor.node12.shadowbrokers.eu tor_exit_enabled_conf=yes 

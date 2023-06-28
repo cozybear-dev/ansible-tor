@@ -9,11 +9,11 @@
     kilobytes_burst: "{{ kilobytes_burst_conf | default('') }}"
     kilobytes_rate: "{{ kilobytes_rate_conf | default('') }}"
   roles:
-    - setup-manjaro-user
-    - setup-apparmor
-    - restrict-kernel
+    # - setup-manjaro-user
+    # - setup-apparmor
+    # - restrict-kernel
     - setup-dns
-    - install-and-configure-tor
+    # - install-and-configure-tor
     # - install-netdata-agent
-    - set-ssh-config #any reboots after this role, will fail during very first setup with root user
-    - get-node-hash
+    # - set-ssh-config #any reboots after this role, will fail during very first setup with root user
+    # - get-node-hash
