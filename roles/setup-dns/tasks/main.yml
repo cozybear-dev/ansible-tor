@@ -54,6 +54,26 @@
   when:
     - ipv6_enabled | bool
 
+- name: Create dns-ddos.sh DNS (unbound) DDOS mitigation 
+  become: yes
+  ansible.builtin.copy:
+    src: ../files/dns-ddos.sh
+    dest: /bin/dns-ddos.sh
+    owner: root
+    group: root
+    mode: '0555'
+  when:
+    - ipv6_enabled | bool
+
+- name: Create cronjob DNS (unbound) DDOS mitigation 
+  become: yes
+  ansible.builtin.cron:
+    name: "Restart Unbound in case of DDOS"
+    minute: "1"
+    job: "/bin/dns-ddos.sh"
+  when:
+    - ipv6_enabled | bool
+
 - name: Configure systemd-resolved
   become: yes
   ansible.builtin.copy:
