@@ -35,11 +35,11 @@
       2A134CF4E3CC5C7F77F331177791843794B96068,
       3EBDF7359190ACC0E23E5BA3B9C046668DF85114
   roles:
-    - setup-manjaro-user
-    - setup-apparmor
-    - restrict-kernel
+    # - setup-manjaro-user
+    # - setup-apparmor
+    # - restrict-kernel
     - setup-dns
     - install-and-configure-tor
-    - install-netdata-agent
-    - set-ssh-config #any reboots after this role, will fail during very first setup with root user
-    - get-node-hash
+    # - install-netdata-agent
+    # - set-ssh-config #any reboots after this role, will fail during very first setup with root user
+    # - get-node-hash
