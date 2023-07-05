@@ -1,0 +1,58 @@
+---
+- name: Update
+  ansible.builtin.apt:
+    update_cache: yes
+
+- name: Dist upgrade
+  ansible.builtin.apt:
+    upgrade: dist
+
+- name: Full upgrade
+  ansible.builtin.apt:
+    upgrade: full
+
+- name: Purge
+  ansible.builtin.apt:
+    autoremove: yes
+
+- name: Reboot
+  reboot:
+    msg: "Reboot initiated by Ansible"
+    connect_timeout: 5
+    reboot_timeout: 300
+    pre_reboot_delay: 0
+    post_reboot_delay: 30
+    test_command: uptime
+
+- name: Backup sources
+  ansible.builtin.copy:
+    src: /etc/apt/sources.list
+    dest: /opt/sources.list-bakup-debian11
+    remote_src: yes
+
+- name: Switch sources from bullseye to bookworm
+  shell: sed -i 's/bullseye/bookworm/g' /etc/apt/sources.list
+
+- name: Update
+  ansible.builtin.apt:
+    update_cache: yes
+
+- name: Ensure dbus UUID exists as required for full upgrade
+  shell: dbus-uuidgen --ensure
+    
+- name: Full upgrade
+  ansible.builtin.apt:
+    upgrade: full
+
+- name: Reboot
+  reboot:
+    msg: "Reboot initiated by Ansible"
+    connect_timeout: 5
+    reboot_timeout: 300
+    pre_reboot_delay: 0
+    post_reboot_delay: 30
+    test_command: uptime
+
+- name: Purge
+  ansible.builtin.apt:
+    autoremove: yes
