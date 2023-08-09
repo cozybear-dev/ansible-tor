@@ -33,7 +33,7 @@
   become: true
   ansible.builtin.copy:
     src: /etc/apt/sources.list
-    dest: /opt/sources.list-bakup-debian11
+    dest: /opt/sources.list-backup-debian11
     remote_src: yes
 
 - name: Switch OS sources from bullseye to bookworm

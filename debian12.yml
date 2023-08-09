@@ -1,0 +1,5 @@
+---
+- hosts: migrate
+  become: yes
+  roles:
+    - upgrade-bookworm-from-bullseye

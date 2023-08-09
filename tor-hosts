@@ -28,4 +28,6 @@ tor.node23.shadowbrokers.eu tor_exit_enabled_conf=yes
 tor.node24.shadowbrokers.eu tor_exit_enabled_conf=yes
 
 [setup]
-tor.node9.shadowbrokers.eu tor_exit_enabled_conf=yes
+
+[migrate]
+tor.node1.shadowbrokers.eu tor_exit_enabled_conf=yes kilobytes_rate_conf=3600 kilobytes_burst_conf=15000
