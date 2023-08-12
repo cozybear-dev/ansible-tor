@@ -27,17 +27,17 @@
   when:
     - ipv6_enabled | bool
 
-- name: Install packages
-  become: yes
-  ansible.builtin.apt:
-    name: "{{ item.package }}"
-    state: present
-    update_cache: yes
-  loop:
-    - package: ntp
-    - package: iptables
-    - package: apt-transport-https
-    - package: gpg
+# - name: Install packages
+#   become: yes
+#   ansible.builtin.apt:
+#     name: "{{ item.package }}"
+#     state: present
+#     update_cache: yes
+#   loop:
+#     - package: ntp
+#     - package: iptables
+#     - package: apt-transport-https
+#     - package: gpg
 
 - name: Ensure resolv.conf is mutable
   become: yes
@@ -53,6 +53,15 @@
     update_cache: yes
   when:
     - ipv6_enabled | bool
+
+- name: Install systemd-resolved package
+  become: yes
+  ansible.builtin.apt:
+    name: systemd-resolved
+    state: present
+    update_cache: yes
+  when:
+    - not ipv6_enabled | bool
 
 - name: Create dns-ddos.sh DNS (unbound) DDOS mitigation 
   become: yes

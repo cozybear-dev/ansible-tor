@@ -4,11 +4,10 @@ RunAsDaemon 1
 
 DataDirectory /var/lib/tor
 
-ORPort 443
+ORPort {{ ipv4_address }}:443
 {% if ipv6_address != "" %}
 ORPort [{{ ipv6_address }}]:443
 {% endif %}
-
 
 Address {{ ipv4_address }}
 
