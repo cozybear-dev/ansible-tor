@@ -47,7 +47,7 @@ My personal priority was to have a fleet that is well positioned geopolitically,
     -   Reliable, fast speed, privacy friendly, accept crypto, bit more expensive
     -   Primary downside, no exits allowed
 
-Using these hosters, my relays are distributed across the following locations, routing through interesting routes over the world; 
+Using these hosters, my relays are distributed across the following locations, routing through interesting cables over the world; 
 
 -   Netherlands
 -   Germany
