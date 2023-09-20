@@ -15,7 +15,7 @@ If you want something more simple and straightforward, also look at these projec
 
 I wanted to keep it simple, and understandable - hence creating this small project. I'm well aware this repo does not adhere to the documented structure of ansible role development.
 
-Only Debian 11 is supported. Debian 10 partially works, but kernel hardening fails partially, sk-ssh-ed25519 is unsupported and DNS over TLS (if no IPv6) will fail - it is NOT supported nor will it ever be! 
+Only Debian 11/12 is supported. Debian 10 partially works, but kernel hardening fails partially, sk-ssh-ed25519 is unsupported and DNS over TLS (if no IPv6) will fail - it is NOT supported nor will it ever be! 
 
 Features:
 - Basic hardening (ssh, kernel, additional user with password, apparmor, prevent core dumping, disable root user)
@@ -47,7 +47,7 @@ My personal priority was to have a fleet that is well positioned geopolitically,
     -   Reliable, fast speed, privacy friendly, accept crypto, bit more expensive
     -   Primary downside, no exits allowed
 
-Using these hosters, my relays are distributed across the following locations; 
+Using these hosters, my relays are distributed across the following locations, routing through interesting routes over the world; 
 
 -   Netherlands
 -   Germany
