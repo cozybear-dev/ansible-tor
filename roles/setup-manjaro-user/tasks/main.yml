@@ -9,6 +9,7 @@
     - package: sudo
     - package: htop
     - package: curl
+    - package: gpg
 - name: Create manjaro user
   become: true
   ansible.builtin.user:

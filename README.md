@@ -72,7 +72,11 @@ ansible -i ./tor-hosts -u manjaro testing -m ping
 
 ansible -i ./tor-hosts -u manjaro tor-fleet -m ping
 
+ansible-playbook -i ./tor-hosts -u root ./setup-tor-node.yml
+
 ansible-playbook -i ./tor-hosts --ask-become-pass -u root ./setup-tor-node.yml
+
+ansible-playbook -i ./tor-hosts --ask-become-pass -u manjaro ./setup-tor-node.yml
 
 ansible-playbook -i ./tor-hosts --ask-become-pass -u manjaro ./set-family.yml
 
