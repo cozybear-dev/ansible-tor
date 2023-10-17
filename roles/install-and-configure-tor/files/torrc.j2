@@ -39,6 +39,9 @@ ExitPolicy reject 192.168.0.0/16:* # Block private IPv4
 ExitPolicy reject 10.0.0.0/8:* # Block private IPv4
 ExitPolicy reject 172.16.0.0/12:* # Block private IPv4
 ExitPolicy reject {{ ipv4_address }}:* # Block myself
+ExitPolicy reject *:2525   # email spam
+ExitPolicy reject *:587    # email spam
+ExitPolicy reject *:465    # email spam
 ExitPolicy reject *:25     # email spam
 ExitPolicy reject *:22     # ssh scanning
 ExitPolicy accept *:*      # accept all else
@@ -51,6 +54,9 @@ ExitPolicy reject6 [FC00::]/7:* # Block private IPv6
 ExitPolicy reject6 [FE80::]/10:* # Block link-local IPv6
 ExitPolicy reject6 [2002::]/16:* # Block 6to4 addresses
 ExitPolicy reject6 [{{ ipv6_address }}]:* # Block myself IPv6
+ExitPolicy reject6 *:2525   # email spam
+ExitPolicy reject6 *:587    # email spam
+ExitPolicy reject6 *:465    # email spam
 ExitPolicy reject6 *:25     # email spam
 ExitPolicy reject6 *:22     # ssh scanning
 ExitPolicy accept6 *:*      # accept all else

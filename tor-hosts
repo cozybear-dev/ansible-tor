@@ -21,15 +21,15 @@ tor.node16.shadowbrokers.eu
 tor.node17.shadowbrokers.eu tor_exit_enabled_conf=yes 
 tor.node18.shadowbrokers.eu
 tor.node19.shadowbrokers.eu tor_exit_enabled_conf=yes 
-tor.node20.shadowbrokers.eu tor_exit_enabled_conf=yes
+tor.node20.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no
 tor.node21.shadowbrokers.eu tor_exit_enabled_conf=yes
 tor.node22.shadowbrokers.eu tor_exit_enabled_conf=yes
 tor.node23.shadowbrokers.eu tor_exit_enabled_conf=yes
 tor.node24.shadowbrokers.eu tor_exit_enabled_conf=yes
-tor.node25.shadowbrokers.eu tor_exit_enabled_conf=yes
+tor.node25.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no
 
 [setup]
-tor.node20.shadowbrokers.eu tor_exit_enabled_conf=yes
-tor.node25.shadowbrokers.eu tor_exit_enabled_conf=yes
+tor.node20.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no
+tor.node25.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no
 
 [migrate]
