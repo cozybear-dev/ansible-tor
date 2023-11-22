@@ -2,6 +2,8 @@
 
 This GitHub repository is my personal development environment for automated stateless relay management.
 
+Do not run anything in this repo blindly. It'd made for personal use. SSH key is hardcoded.
+
 My fleet can be found here; https://metrics.torproject.org/rs.html#search/cozybear
 
 There is already a great repository here with way better support and e.g. key management; 
