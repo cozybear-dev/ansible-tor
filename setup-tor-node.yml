@@ -1,6 +1,6 @@
 ---
-- hosts: tor-fleet-managed
-# - hosts: setup
+# - hosts: tor-fleet-managed
+- hosts: setup
   vars:
     contact_info: "email:tor[]shadowbrokers.eu url:shadowbrokers.eu proof:dns-rsa btc:bc1qu9m2sy836pmyku0t3vnmpjxfjds8p2x5psyl6y ciissversion:2"
     tor_contact_email: tor@shadowbrokers.eu
@@ -34,7 +34,8 @@
       2A134CF4E3CC5C7F77F331177791843794B96068,
       3EBDF7359190ACC0E23E5BA3B9C046668DF85114,
       EE50AAEA83AA7EDAF0A35E4E8EA4976483ABCCDD,
-      8F013AB2708FB36FA5F9594DC97701E64545ADEF
+      8F013AB2708FB36FA5F9594DC97701E64545ADEF,
+      8B31226353E33A49D43A0140F05AA056337E8578
   roles:
     - setup-manjaro-user
     - setup-apparmor
