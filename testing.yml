@@ -1,7 +1,8 @@
 ---
-- hosts: testnode
+- hosts:
+    - testnode4
   vars:
-    contact_info: "email:tor[]shadowbrokers.eu - testing automation"
+    contact_info: "email:tor[]shadowbrokers.eu url:shadowbrokers.eu proof:dns-rsa btc:bc1qu9m2sy836pmyku0t3vnmpjxfjds8p2x5psyl6y ciissversion:2 - EXPERIMENTAL NODE"
     tor_contact_email: tor@shadowbrokers.eu
     hostname: "{{ inventory_hostname }}"
     ipv6_enabled: "{{ ipv6_enabled_conf | default('yes') }}"
@@ -9,14 +10,14 @@
     kilobytes_burst: "{{ kilobytes_burst_conf | default('') }}"
     kilobytes_rate: "{{ kilobytes_rate_conf | default('') }}"
     tor_family: > 
-      testing
+      none
   roles:
-    - setup-manjaro-user
-    - setup-apparmor
-    - restrict-kernel
-    - setup-dns
-    - install-and-configure-tor
-    # - install-netdata-agent
-    - set-ssh-config #any reboots after this role, will fail during very first setup with root user
-    - get-node-hash
     - upgrade-bookworm-from-bullseye
+    # - setup-manjaro-user
+    # - setup-apparmor
+    # - restrict-kernel
+    # - setup-dns
+    # - install-and-configure-tor
+    # - install-netdata-agent
+    # - set-ssh-config
+    # - get-node-hash

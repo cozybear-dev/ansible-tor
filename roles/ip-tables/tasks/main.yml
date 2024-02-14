@@ -1,0 +1,93 @@
+- name: Ensure iptables is installed # well aware nftables is a thing
+  become: yes
+  ansible.builtin.apt:
+    name: "{{ item.package }}"
+    state: present
+    update_cache: yes
+  when:
+    - tor_exit_enabled | bool
+  loop:
+    - package: iptables-persistent
+    - package: iptables
+
+- name: Drop outbound tcp ports - ipv4
+  ansible.builtin.iptables:
+    chain: OUTPUT
+    jump: DROP
+    protocol: tcp
+    destination_port: "{{ item.port }}"
+  loop:
+    - port: 2525
+    - port: 587
+    - port: 465
+    - port: 25
+    - port: 22
+  when:
+    - (tor_exit_enabled | bool) and (not ipv6_enabled | bool)
+  become: yes
+
+- name: Drop outbound udp ports - ipv4
+  ansible.builtin.iptables:
+    chain: OUTPUT
+    jump: DROP
+    protocol: udp
+    destination_port: "{{ item.port }}"
+  loop:
+    - port: 2525
+    - port: 587
+    - port: 465
+    - port: 25
+    - port: 22
+  become: yes
+  when:
+    - (tor_exit_enabled | bool) and (not ipv6_enabled | bool)
+
+- name: Drop outbound tcp ports - ipv6
+  ansible.builtin.iptables:
+    ip_version: ipv6
+    chain: OUTPUT
+    jump: DROP
+    protocol: tcp
+    destination_port: "{{ item.port }}"
+  loop:
+    - port: 2525
+    - port: 587
+    - port: 465
+    - port: 25
+    - port: 22
+  when:
+    - (tor_exit_enabled | bool) and (ipv6_enabled | bool)
+  become: yes
+
+- name: Drop outbound udp ports - ipv6
+  ansible.builtin.iptables:
+    ip_version: ipv6
+    chain: OUTPUT
+    jump: DROP
+    protocol: udp
+    destination_port: "{{ item.port }}"
+  loop:
+    - port: 2525
+    - port: 587
+    - port: 465
+    - port: 25
+    - port: 22
+  become: yes
+  when:
+    - (tor_exit_enabled | bool) and (ipv6_enabled | bool)
+
+- name: Save current state of the firewall in system file - ipv4
+  community.general.iptables_state:
+    state: saved
+    path: /etc/iptables/rules.v4
+  become: yes
+  when:
+    - (tor_exit_enabled | bool) and (not ipv6_enabled | bool)
+
+- name: Save current state of the firewall in system file - ipv6
+  community.general.iptables_state:
+    state: saved
+    path: /etc/iptables/rules.v6
+  become: yes
+  when:
+    - (tor_exit_enabled | bool) and (ipv6_enabled | bool)

@@ -4,7 +4,7 @@ This GitHub repository is my personal development environment for automated stat
 
 Do not run anything in this repo blindly. It'd made for personal use. SSH key is hardcoded.
 
-My fleet can be found here; https://metrics.torproject.org/rs.html#search/cozybear
+My fleet can be found here; https://metrics.torproject.org/rs.html#search/cozybear or https://nusenu.github.io/OrNetStats/shadowbrokers.eu.html
 
 There is already a great repository here with way better support and e.g. key management; 
 
@@ -48,6 +48,8 @@ My personal priority was to have a fleet that is well positioned geopolitically,
 - https://veesp.com/
     -   Reliable, fast speed, privacy friendly, accept crypto, bit more expensive
     -   Primary downside, no exits allowed
+- https://4vps.su/
+    -   Still evaluating, but they seem ok. They have high performance servers in lots of unique places. Pricing and hardware is good. Good value in general.
 
 Using these hosters, my relays are distributed across the following locations, routing through interesting cables over the world; 
 

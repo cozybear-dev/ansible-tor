@@ -40,9 +40,9 @@
   become: true
   shell: sed -i 's/bullseye/bookworm/g' /etc/apt/sources.list
 
-- name: Switch Tor sources from bullseye to bookworm
-  become: true
-  shell: sed -i 's/bullseye/bookworm/g' /etc/apt/sources.list.d/tor.list
+# - name: Switch Tor sources from bullseye to bookworm
+#   become: true
+#   shell: sed -i 's/bullseye/bookworm/g' /etc/apt/sources.list.d/tor.list
 
 - name: Update
   become: true
