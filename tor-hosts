@@ -14,7 +14,7 @@ tor.node3.shadowbrokers.eu tor_exit_enabled_conf=yes kilobytes_rate_conf=5500 ki
 tor.node4.shadowbrokers.eu tor_exit_enabled_conf=yes kilobytes_rate_conf=5500 kilobytes_burst_conf=15000
 tor.node5.shadowbrokers.eu tor_exit_enabled_conf=yes kilobytes_rate_conf=5500 kilobytes_burst_conf=15000
 tor.node6.shadowbrokers.eu tor_exit_enabled_conf=yes kilobytes_rate_conf=5500 kilobytes_burst_conf=15000
-tor.node7.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no
+tor.node7.shadowbrokers.eu ipv6_enabled_conf=no
 tor.node8.shadowbrokers.eu tor_exit_enabled_conf=yes 
 tor.node9.shadowbrokers.eu tor_exit_enabled_conf=yes
 tor.node10.shadowbrokers.eu tor_exit_enabled_conf=yes
@@ -37,8 +37,11 @@ tor.node26.shadowbrokers.eu tor_exit_enabled_conf=yes
 tor.node27.shadowbrokers.eu
 tor.node28.shadowbrokers.eu ipv6_enabled_conf=no
 tor.node29.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no
+tor.node30.shadowbrokers.eu tor_exit_enabled_conf=yes
+tor.node31.shadowbrokers.eu tor_exit_enabled_conf=yes
+tor.node32.shadowbrokers.eu tor_exit_enabled_conf=yes
 
 [setup]
-tor.node29.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no
+tor.node31.shadowbrokers.eu tor_exit_enabled_conf=yes
 
 [migrate]

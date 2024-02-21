@@ -23,7 +23,7 @@
     - port: 25
     - port: 22
   when:
-    - (tor_exit_enabled | bool) and (not ipv6_enabled | bool)
+    - tor_exit_enabled | bool
   become: yes
 
 - name: Drop outbound udp ports - ipv4
@@ -40,7 +40,7 @@
     - port: 22
   become: yes
   when:
-    - (tor_exit_enabled | bool) and (not ipv6_enabled | bool)
+    - tor_exit_enabled | bool
 
 - name: Drop outbound tcp ports - ipv6
   ansible.builtin.iptables:
@@ -82,7 +82,7 @@
     path: /etc/iptables/rules.v4
   become: yes
   when:
-    - (tor_exit_enabled | bool) and (not ipv6_enabled | bool)
+    - tor_exit_enabled | bool
 
 - name: Save current state of the firewall in system file - ipv6
   community.general.iptables_state:
