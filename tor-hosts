@@ -40,8 +40,9 @@ tor.node29.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no
 tor.node30.shadowbrokers.eu tor_exit_enabled_conf=yes
 tor.node31.shadowbrokers.eu tor_exit_enabled_conf=yes
 tor.node32.shadowbrokers.eu tor_exit_enabled_conf=yes
+tor.node33.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no
 
 [setup]
-tor.node31.shadowbrokers.eu tor_exit_enabled_conf=yes
+tor.node10.shadowbrokers.eu tor_exit_enabled_conf=yes
 
 [migrate]

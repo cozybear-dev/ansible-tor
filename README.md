@@ -50,6 +50,10 @@ My personal priority was to have a fleet that is well positioned geopolitically,
     -   Primary downside, no exits allowed
 - https://4vps.su/
     -   Still evaluating, but they seem ok. They have high performance servers in lots of unique places. Pricing and hardware is good. Good value in general.
+- https://snowcore.io/
+    -   Still evaluating.
+- https://pfcloud.io/
+    -   Still evaluating.
 
 Using these hosters, my relays are distributed across the following locations, routing through interesting cables over the world; 
 
@@ -59,8 +63,10 @@ Using these hosters, my relays are distributed across the following locations, r
 -   Finland
 -   France
 -   Austria
--   Various states in the USA
+-   USA
 -   Russia
+-   Hong Kong
+-   Czech republic
 
 ## Some useful commands
 ```

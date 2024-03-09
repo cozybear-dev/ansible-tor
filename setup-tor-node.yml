@@ -1,6 +1,6 @@
 ---
-- hosts: tor-fleet-managed
-# - hosts: setup
+# - hosts: tor-fleet-managed
+- hosts: setup
   vars:
     contact_info: "email:tor[]shadowbrokers.eu url:shadowbrokers.eu proof:dns-rsa btc:bc1qu9m2sy836pmyku0t3vnmpjxfjds8p2x5psyl6y ciissversion:2"
     tor_contact_email: tor@shadowbrokers.eu
@@ -41,14 +41,15 @@
       15C364DEF4D6A045D55F97FB3FB31EE8635AF780,
       E9EA2D5287B668498026E07289482E3FD50C1047,
       7B1E489F721DF140436AA42BD513DFB3BD40DF5E,
-      5B0BFE295F857E47D7C2A420260A9E1A61B0044F
+      5B0BFE295F857E47D7C2A420260A9E1A61B0044F,
+      C80CC578B912CEDFCD8250296341FDDC44B2DD18
   roles:
     # - setup-manjaro-user
     # - setup-apparmor
     # - restrict-kernel
     # - setup-dns
-    # - install-and-configure-tor
+    - install-and-configure-tor
     # - install-netdata-agent
     # - set-ssh-config #any reboots after this role, will fail during very first setup with root user
-    - ip-tables
+    # - ip-tables
     # - get-node-hash
