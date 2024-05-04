@@ -45,6 +45,7 @@ My personal priority was to have a fleet that is well positioned geopolitically,
     -   Support can be slow (up to a few days), but the responses are always very extensive and detailed
     -   Actively supports privacy and anonymity
     -   Payment via cryptocurrency
+    -   Ultimatly stopped renting servers after a year, because it's just too expensive compared to the alternatives.
 - https://veesp.com/
     -   Reliable, fast speed, privacy friendly, accept crypto, bit more expensive
     -   Primary downside, no exits allowed
