@@ -10,12 +10,18 @@
     - package: htop
     - package: curl
     - package: gpg
+    - package: whois
+- name: Create hashed password
+  become: true
+  ansible.builtin.command: "mkpasswd --method=SHA-512 {{ lookup('community.general.bitwarden', 'manjaro-user-passwd-tor-fleet', field='password')[0] }}"
+  register: hashed_password
+  no_log: true
 - name: Create manjaro user
   become: true
   ansible.builtin.user:
     name: manjaro
     state: present
-    password: "{{ lookup('community.general.bitwarden', 'manjaro-user-passwd-tor-fleet', field='password')[0] | password_hash }}"
+    password: "{{ hashed_password.stdout }}"
     shell: /bin/bash
     group: sudo
 - name: Set authorized key (yubikey 2fa) for manjaro user

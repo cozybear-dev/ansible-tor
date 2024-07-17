@@ -50,11 +50,11 @@ My personal priority was to have a fleet that is well positioned geopolitically,
     -   Reliable, fast speed, privacy friendly, accept crypto, bit more expensive
     -   Primary downside, no exits allowed
 - https://4vps.su/
-    -   Still evaluating, but they seem ok. They have high performance servers in lots of unique places. Pricing and hardware is good. Good value in general.
+    -   They have high performance servers in lots of unique places. Pricing and hardware is good. Good value in general.
 - https://snowcore.io/
-    -   Still evaluating.
+    -   Good servers, but stopped - as they don't support e-mail notifications and automatic billing methods.
 - https://pfcloud.io/
-    -   Still evaluating.
+    -   Good bang for buck, but recently (July 2024) they had an incredible shitshow caused by court orders. Long story short; I had 1 month of downtime for all VMs and had full disk data loss.
 
 Using these hosters, my relays are distributed across the following locations, routing through interesting cables over the world; 
 
