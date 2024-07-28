@@ -30,7 +30,6 @@
       3EBDF7359190ACC0E23E5BA3B9C046668DF85114,
       8B31226353E33A49D43A0140F05AA056337E8578,
       AA5C46F66CB5863FA379F18081F9BEDC130AD601,
-      C80CC578B912CEDFCD8250296341FDDC44B2DD18,
       ED3F06DC5FFD8EBC732920E8F044B132AE6C3B80,
       DFDAF22D0F96265C5A1FB0C319ECD4D532339DE8,
       D69801BF161F4A15D45B78ED02C48DBE9993CFC1,
@@ -40,14 +39,15 @@
       7CF3BFD0DE5AD3772CB9D293BF9251813296924C,
       D04FE78152A06AEAF950A2E58A11E9739B291C0A,
       31DEA0877BE529EF6716ECD22527A63B156C34E8,
-      A4A98B4E4EBBAADE5C8226D041555E82B59342F3
+      A4A98B4E4EBBAADE5C8226D041555E82B59342F3,
+      D9D4BCE7133616C8C9FA4C4156EB14D344E6229D
   roles:
-    - setup-manjaro-user
-    - setup-apparmor
-    - restrict-kernel
-    - setup-dns
+    # - setup-manjaro-user
+    # - setup-apparmor
+    # - restrict-kernel
+    # - setup-dns
     - install-and-configure-tor
-    - install-netdata-agent
-    - set-ssh-config #any reboots after this role, will fail during very first setup with root user
-    - ip-tables
-    - get-node-hash
+    # - install-netdata-agent
+    # - set-ssh-config #any reboots after this role, will fail during very first setup with root user
+    # - ip-tables
+    # - get-node-hash
