@@ -1,86 +1,86 @@
----
-- name: Disable IPv6 in kernel
-  become: yes
-  ansible.posix.sysctl:
-    name: "{{ item.config }}"
-    value: '1'
-    sysctl_set: true
-    state: present
-    reload: true
-  loop:
-    - config: net.ipv6.conf.all.disable_ipv6
-    - config: net.ipv6.conf.default.disable_ipv6
-  when:
-    - not ipv6_enabled | bool
+# ---
+# - name: Disable IPv6 in kernel
+#   become: yes
+#   ansible.posix.sysctl:
+#     name: "{{ item.config }}"
+#     value: '1'
+#     sysctl_set: true
+#     state: present
+#     reload: true
+#   loop:
+#     - config: net.ipv6.conf.all.disable_ipv6
+#     - config: net.ipv6.conf.default.disable_ipv6
+#   when:
+#     - not ipv6_enabled | bool
 
-- name: Enable IPv6 in kernel
-  become: yes
-  ansible.posix.sysctl:
-    name: "{{ item.config }}"
-    value: '0'
-    sysctl_set: true
-    state: present
-    reload: true
-  loop:
-    - config: net.ipv6.conf.all.disable_ipv6
-    - config: net.ipv6.conf.default.disable_ipv6
-  when:
-    - ipv6_enabled | bool
+# - name: Enable IPv6 in kernel
+#   become: yes
+#   ansible.posix.sysctl:
+#     name: "{{ item.config }}"
+#     value: '0'
+#     sysctl_set: true
+#     state: present
+#     reload: true
+#   loop:
+#     - config: net.ipv6.conf.all.disable_ipv6
+#     - config: net.ipv6.conf.default.disable_ipv6
+#   when:
+#     - ipv6_enabled | bool
 
-# - name: Install packages
+# # - name: Install packages
+# #   become: yes
+# #   ansible.builtin.apt:
+# #     name: "{{ item.package }}"
+# #     state: present
+# #     update_cache: yes
+# #   loop:
+# #     - package: ntp
+# #     - package: iptables
+# #     - package: apt-transport-https
+# #     - package: gpg
+
+# - name: Ensure resolv.conf is mutable
+#   become: yes
+#   file:
+#     path: /etc/resolv.conf
+#     attr: -i
+
+# - name: Install unbound package
 #   become: yes
 #   ansible.builtin.apt:
-#     name: "{{ item.package }}"
+#     name: unbound
 #     state: present
 #     update_cache: yes
-#   loop:
-#     - package: ntp
-#     - package: iptables
-#     - package: apt-transport-https
-#     - package: gpg
+#   when:
+#     - ipv6_enabled | bool
 
-- name: Ensure resolv.conf is mutable
-  become: yes
-  file:
-    path: /etc/resolv.conf
-    attr: -i
+# - name: Install systemd-resolved package
+#   become: yes
+#   ansible.builtin.apt:
+#     name: systemd-resolved
+#     state: present
+#     update_cache: yes
+#   when:
+#     - not ipv6_enabled | bool
 
-- name: Install unbound package
-  become: yes
-  ansible.builtin.apt:
-    name: unbound
-    state: present
-    update_cache: yes
-  when:
-    - ipv6_enabled | bool
+# - name: Create dns-ddos.sh DNS (unbound) DDOS mitigation 
+#   become: yes
+#   ansible.builtin.copy:
+#     src: ../files/dns-ddos.sh
+#     dest: /bin/dns-ddos.sh
+#     owner: root
+#     group: root
+#     mode: '0555'
+#   when:
+#     - ipv6_enabled | bool
 
-- name: Install systemd-resolved package
-  become: yes
-  ansible.builtin.apt:
-    name: systemd-resolved
-    state: present
-    update_cache: yes
-  when:
-    - not ipv6_enabled | bool
-
-- name: Create dns-ddos.sh DNS (unbound) DDOS mitigation 
-  become: yes
-  ansible.builtin.copy:
-    src: ../files/dns-ddos.sh
-    dest: /bin/dns-ddos.sh
-    owner: root
-    group: root
-    mode: '0555'
-  when:
-    - ipv6_enabled | bool
-
-- name: Create cronjob DNS (unbound) DDOS mitigation 
-  become: yes
-  ansible.builtin.cron:
-    name: "Restart Unbound in case of DDOS"
-    job: "/bin/dns-ddos.sh"
-  when:
-    - ipv6_enabled | bool
+# - name: Create cronjob DNS (unbound) DDOS mitigation 
+#   become: yes
+#   ansible.builtin.cron:
+#     name: "Restart Unbound in case of DDOS"
+#     job: "/bin/dns-ddos.sh"
+#   when:
+#     - ipv6_enabled | bool
 
 - name: Configure systemd-resolved
   become: yes
@@ -93,43 +93,54 @@
   when:
     - not ipv6_enabled | bool
 
-- name: Start and enable systemd-resolved
-  become: yes
-  ansible.builtin.service:
-    name: systemd-resolved
-    state: started
-    enabled: yes
-  when:
-    - not ipv6_enabled | bool
+# - name: Start and enable systemd-resolved
+#   become: yes
+#   ansible.builtin.service:
+#     name: systemd-resolved
+#     state: started
+#     enabled: yes
+#   when:
+#     - not ipv6_enabled | bool
 
-- name: Set resolv.conf configuration (ipv4)
-  become: yes
-  ansible.builtin.copy:
-    content: 'nameserver 127.0.0.53'
-    dest: /etc/resolv.conf
-    owner: root
-    group: root
-    mode: '0644'
-  when:
-    - not ipv6_enabled | bool
-  register: resolv_conf_updated
+# - name: Set resolv.conf configuration (ipv4)
+#   become: yes
+#   ansible.builtin.copy:
+#     content: 'nameserver 127.0.0.53'
+#     dest: /etc/resolv.conf
+#     owner: root
+#     group: root
+#     mode: '0644'
+#   when:
+#     - not ipv6_enabled | bool
+#   register: resolv_conf_updated
 
-- name: Set resolv.conf configuration (ipv6)
-  become: yes
-  ansible.builtin.copy:
-    content: 'nameserver 127.0.0.1'
-    dest: /etc/resolv.conf
-    owner: root
-    group: root
-    mode: '0644'
-  when:
-    - ipv6_enabled | bool
+# - name: Set resolv.conf configuration (ipv6)
+#   become: yes
+#   ansible.builtin.copy:
+#     content: 'nameserver 127.0.0.1'
+#     dest: /etc/resolv.conf
+#     owner: root
+#     group: root
+#     mode: '0644'
+#   when:
+#     - ipv6_enabled | bool
   
-- name: Ensure resolv.conf is immutable
-  become: yes
-  file:
-    path: /etc/resolv.conf
-    attr: +i
+# - name: Ensure resolv.conf is immutable
+#   become: yes
+#   file:
+#     path: /etc/resolv.conf
+#     attr: +i
+
+# - name: Reboot
+#   become: yes
+#   reboot:
+#     msg: "Reboot initiated by Ansible as required"
+#     connect_timeout: 5
+#     reboot_timeout: 300
+#     pre_reboot_delay: 0
+#     post_reboot_delay: 30
+#     test_command: uptime
+#   when: resolv_conf_updated.changed
 
 - name: Reboot
   become: yes
@@ -140,4 +151,5 @@
     pre_reboot_delay: 0
     post_reboot_delay: 30
     test_command: uptime
-  when: changed_kernel_modules.changed
+  when:
+    - not ipv6_enabled | bool

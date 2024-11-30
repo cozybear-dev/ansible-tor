@@ -2,7 +2,7 @@
 # - hosts: tor-fleet-managed
 - hosts: setup
   vars:
-    contact_info: "email:tor[]shadowbrokers.eu url:shadowbrokers.eu proof:dns-rsa btc:bc1qu9m2sy836pmyku0t3vnmpjxfjds8p2x5psyl6y ciissversion:2"
+    contact_info: "email:tor[]shadowbrokers.eu url:shadowbrokers.eu proof:dns-rsa btc:bc1qu9m2sy836pmyku0t3vnmpjxfjds8p2x5psyl6y ciissversion:2 fuck:r00t.monster"
     tor_contact_email: tor@shadowbrokers.eu
     hostname: "{{ inventory_hostname }}"
     ipv6_enabled: "{{ ipv6_enabled_conf | default('yes') }}"
@@ -42,6 +42,7 @@
       A4A98B4E4EBBAADE5C8226D041555E82B59342F3,
       D9D4BCE7133616C8C9FA4C4156EB14D344E6229D
   roles:
+    # - ensure-tor-gpg
     # - setup-manjaro-user
     # - setup-apparmor
     # - restrict-kernel
