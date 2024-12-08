@@ -1,58 +1,58 @@
 ---
-# - name: Ensure torproject gpg key is installed (A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89) #credits; https://github.dev/nusenu/ansible-relayor
-#   become: yes
-#   apt_key:
-#     url: https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc
-#     id: A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89
-#     state: present
-#     keyring: /usr/share/keyrings/deb.torproject.org-keyring.gpg
-# - name: Ensure Tor sources list is non-existent
-#   become: yes
-#   ansible.builtin.file:
-#     path: /etc/apt/sources.list.d/tor.list  
-#     state: absent
-# - name: Add Tor repositories
-#   become: yes
-#   ansible.builtin.apt_repository:
-#     repo: "{{ item.repo }}"
-#     state: present
-#     filename: tor
-#   loop:
-#     - repo: "deb [signed-by=/usr/share/keyrings/deb.torproject.org-keyring.gpg] https://deb.torproject.org/torproject.org {{ ansible_distribution_release }} main"
-#     - repo: "deb-src [signed-by=/usr/share/keyrings/deb.torproject.org-keyring.gpg] https://deb.torproject.org/torproject.org {{ ansible_distribution_release }} main"
-# - name: Install Tor packages
-#   become: yes
-#   ansible.builtin.apt:
-#     name: "{{ item.package }}"
-#     state: present
-#     update_cache: yes
-#   loop:
-#     - package: deb.torproject.org-keyring
-#     - package: tor
-#     - package: nyx
-# - name: Install Tor packages
-#   become: yes
-#   ansible.builtin.apt:
-#     name: "{{ item.package }}"
-#     state: present
-#     update_cache: yes
-#   loop:
-#     - package: deb.torproject.org-keyring
-#     - package: tor
-#     - package: nyx
-# - name: Ensure tor-exit-notice.html is present (if we are an exit)
-#   become: yes
-#   template:
-#     src: ../files/tor-exit-notice.j2
-#     dest: "/etc/tor/tor-exit-notice.html"
-#     mode: 0444
-#   when:
-#     - tor_exit_enabled | bool
+- name: Ensure torproject gpg key is installed (A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89) #credits; https://github.dev/nusenu/ansible-relayor
+  become: yes
+  apt_key:
+    url: https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc
+    id: A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89
+    state: present
+    keyring: /usr/share/keyrings/deb.torproject.org-keyring.gpg
+- name: Ensure Tor sources list is non-existent
+  become: yes
+  ansible.builtin.file:
+    path: /etc/apt/sources.list.d/tor.list  
+    state: absent
+- name: Add Tor repositories
+  become: yes
+  ansible.builtin.apt_repository:
+    repo: "{{ item.repo }}"
+    state: present
+    filename: tor
+  loop:
+    - repo: "deb [signed-by=/usr/share/keyrings/deb.torproject.org-keyring.gpg] https://deb.torproject.org/torproject.org {{ ansible_distribution_release }} main"
+    - repo: "deb-src [signed-by=/usr/share/keyrings/deb.torproject.org-keyring.gpg] https://deb.torproject.org/torproject.org {{ ansible_distribution_release }} main"
+- name: Install Tor packages
+  become: yes
+  ansible.builtin.apt:
+    name: "{{ item.package }}"
+    state: present
+    update_cache: yes
+  loop:
+    - package: deb.torproject.org-keyring
+    - package: tor
+    - package: nyx
+- name: Install Tor packages
+  become: yes
+  ansible.builtin.apt:
+    name: "{{ item.package }}"
+    state: present
+    update_cache: yes
+  loop:
+    - package: deb.torproject.org-keyring
+    - package: tor
+    - package: nyx
+- name: Ensure tor-exit-notice.html is present (if we are an exit)
+  become: yes
+  template:
+    src: ../files/tor-exit-notice.j2
+    dest: "/etc/tor/tor-exit-notice.html"
+    mode: 0444
+  when:
+    - tor_exit_enabled | bool
 - name: Place torrc configuration file
   become: yes
   vars:
-    - ipv4_address: "{{ ansible_default_ipv4.address | default(ansible_all_ipv4_addresses[0]) }}"
-    - ipv6_address: "{{ (ansible_default_ipv6.address|default(ansible_all_ipv6_addresses[0])) if ipv6_enabled | bool else '' }}"
+    ipv4_address: "{{ ansible_default_ipv4.address | default(ansible_all_ipv4_addresses[0]) }}"
+    ipv6_address: "{{ (ansible_default_ipv6.address|default(ansible_all_ipv6_addresses[0])) if ipv6_enabled | bool else '' }}"
   ansible.builtin.template:
     src: ../files/torrc.j2
     dest: /etc/tor/torrc

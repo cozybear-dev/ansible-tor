@@ -20,8 +20,8 @@ tor.node18.shadowbrokers.eu
 tor.node19.shadowbrokers.eu ipv6_enabled_conf=no
 tor.node21.shadowbrokers.eu ipv6_enabled_conf=no
 tor.node22.shadowbrokers.eu ipv6_enabled_conf=no
-tor.node23.shadowbrokers.eu 
-tor.node24.shadowbrokers.eu 
+tor.node23.shadowbrokers.eu ipv6_enabled_conf=no
+tor.node24.shadowbrokers.eu ipv6_enabled_conf=no
 tor.node26.shadowbrokers.eu 
 tor.node27.shadowbrokers.eu tor_exit_enabled_conf=yes
 tor.node28.shadowbrokers.eu ipv6_enabled_conf=no
@@ -32,7 +32,9 @@ tor.node32.shadowbrokers.eu tor_exit_enabled_conf=yes
 tor.node33.shadowbrokers.eu ipv6_enabled_conf=no
 
 [setup]
-tor.node26.shadowbrokers.eu 
-tor.node29.shadowbrokers.eu ipv6_enabled_conf=no
+tor.node21.shadowbrokers.eu ipv6_enabled_conf=no
+tor.node22.shadowbrokers.eu ipv6_enabled_conf=no
+tor.node23.shadowbrokers.eu ipv6_enabled_conf=no
+tor.node24.shadowbrokers.eu ipv6_enabled_conf=no
 
 [migrate]
