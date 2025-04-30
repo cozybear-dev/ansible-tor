@@ -19,13 +19,13 @@ tor.node17.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no same_
 tor.node18.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no same_host_conf=yes shortname_conf=node18 orport_conf=10010
 tor.node19.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no same_host_conf=yes shortname_conf=node19 orport_conf=10011
 tor.node20.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no same_host_conf=yes shortname_conf=node20 orport_conf=10012
-tor.node21.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no same_host_conf=yes shortname_conf=node21 orport_conf=10012
-tor.node22.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no same_host_conf=yes shortname_conf=node22 orport_conf=10013
-tor.node23.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no same_host_conf=yes shortname_conf=node23 orport_conf=10014
-tor.node24.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no same_host_conf=yes shortname_conf=node24 orport_conf=10015
+tor.node21.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no same_host_conf=yes shortname_conf=node21 orport_conf=10013
+tor.node22.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no same_host_conf=yes shortname_conf=node22 orport_conf=10014
+tor.node23.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no same_host_conf=yes shortname_conf=node23 orport_conf=10015
+tor.node24.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no same_host_conf=yes shortname_conf=node24 orport_conf=10016
 tor.node25.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no same_host_conf=yes shortname_conf=node25 orport_conf=10017
-tor.node26.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no same_host_conf=yes shortname_conf=node26 orport_conf=10016
-tor.node27.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no same_host_conf=yes shortname_conf=node27 orport_conf=10017
+tor.node26.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no same_host_conf=yes shortname_conf=node26 orport_conf=10018
+tor.node27.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no same_host_conf=yes shortname_conf=node27 orport_conf=10019
 
 [setup]
 tor.node20.shadowbrokers.eu tor_exit_enabled_conf=yes ipv6_enabled_conf=no same_host_conf=yes shortname_conf=node20 orport_conf=10012
