@@ -3,6 +3,14 @@
   become: yes
   shell: cat /var/lib/tor/fingerprint
   register: relay_fingerprint
+  when:
+    - not same_host | bool
+- name: Get relay fingerprint
+  become: yes
+  shell: cat /var/lib/tor-instances/{{ host_shortname }}/fingerprint
+  register: relay_fingerprint
+  when:
+    - same_host | bool
 - name: Show relay fingerprint
   debug:
     msg: "{{relay_fingerprint.stdout}}"

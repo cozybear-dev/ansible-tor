@@ -32,6 +32,7 @@ Tor needs to be as decentralised as possible, to minimize traffic corrolation at
 My personal priority was to have a fleet that is well positioned geopolitically, not too expensive, and cares about privacy and anonymity - whilst not be one of the big hosters that has too many relays anyway. Using these principles, I found my way into these hosters;
 
 - https://aeza.net/
+    -   [SINCE APRIL 25 DO NOT RECOMMEND!] They are now actively blocking all Tor relay use, and have added it explicitly to their ToS. My account got blocked, funds lost.
     -   Incredible bang for buck
     -   Goes without saying it's a good hoster geopolitically
     -   Payment via cryptocurrency, and had no issues with privacy/anonymity
@@ -55,6 +56,8 @@ My personal priority was to have a fleet that is well positioned geopolitically,
     -   Good servers, but stopped - as they don't support e-mail notifications and automatic billing methods.
 - https://pfcloud.io/
     -   Good bang for buck, but recently (July 2024) they had an incredible shitshow caused by court orders. Long story short; I had 1 month of downtime for all VMs and had full disk data loss.
+- https://macarne.com/
+    -   Testing out dedicated server setup. 
 
 Using these hosters, my relays are distributed across the following locations, routing through interesting cables over the world; 
 

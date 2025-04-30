@@ -6,7 +6,28 @@
     regexp: '^MyFamily'
     line: MyFamily {{ tor_family }}
   register: family_change
+  when:
+    - not same_host | bool
+- name: Set family to correct value
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/tor/instances/{{ host_shortname }}/torrc
+    regexp: '^MyFamily'
+    line: MyFamily {{ tor_family }}
+  register: family_change
+  when:
+    - same_host | bool
 - name: Reload Tor service
   ansible.builtin.include_role:
     name: reload-tor
-  when: family_change.changed
+  when: 
+    - family_change.changed
+    - not same_host | bool
+- name: Reload Tor service
+  become: true
+  ansible.builtin.service:
+    name: tor@{{ host_shortname }}
+    state: reloaded
+  when:
+    - family_change.changed
+    - same_host | bool

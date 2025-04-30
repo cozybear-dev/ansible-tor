@@ -124,6 +124,7 @@
     mode: '0644'
   when:
     - ipv6_enabled | bool
+  register: resolv_conf_updated
   
 - name: Ensure resolv.conf is immutable
   become: yes
@@ -141,15 +142,3 @@
     post_reboot_delay: 30
     test_command: uptime
   when: resolv_conf_updated.changed
-
-- name: Reboot
-  become: yes
-  reboot:
-    msg: "Reboot initiated by Ansible as required"
-    connect_timeout: 5
-    reboot_timeout: 300
-    pre_reboot_delay: 0
-    post_reboot_delay: 30
-    test_command: uptime
-  when:
-    - not ipv6_enabled | bool
