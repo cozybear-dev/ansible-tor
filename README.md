@@ -57,7 +57,8 @@ My personal priority was to have a fleet that is well positioned geopolitically,
 - https://pfcloud.io/
     -   Good bang for buck, but recently (July 2024) they had an incredible shitshow caused by court orders. Long story short; I had 1 month of downtime for all VMs and had full disk data loss.
 - https://macarne.com/
-    -   Testing out dedicated server setup. 
+    -   Testing out dedicated server setup, came on my radar as they sponsor servers for GrapheneOS.
+    -   Experience after 2 months; best support I've ever seen (via Telegram), top tier hardware and incredibly good international network connection, good pricing as well. Thus far, has been my best experience at a hoster. Biggest downside, they don't accept cryptocurrency as a form of payment. Not a dealbreaker for me, but might for some. They are privacy friendly nonetheless. 
 
 Using these hosters, my relays are distributed across the following locations, routing through interesting cables over the world; 
 
